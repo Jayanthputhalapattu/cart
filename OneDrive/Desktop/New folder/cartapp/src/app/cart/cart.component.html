@@ -1,0 +1,38 @@
+
+  <div class="container">
+    <h1>Cart</h1>
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th *ngFor="let prod of cartItems[0] |keyvalue">{{prod.key}}</th>
+                    <th>Update</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let prod of cartItems">
+                     <td   *ngFor="let p of prod | keyvalue">{{p.value}}</td> 
+
+                     <td>
+                        <input type="number" min="1" max="20" value={{prod.quantity}} #quant/>
+                        <button class="btn btn-info" (click)="handleClick(parseInter(quant.value),prod.productname)">update Quantity</button></td> 
+                  </tr>
+                </tbody>
+                <!-- <button class="btn btn-primary">Hello</button> -->
+            
+            
+              </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row">
+              Total Price : {{TotalPrice}}
+        </div>
+        <div class="col">
+            <button class="btn btn-primary" (click)="checkOut()">Checkout</button>
+        </div>
+    </div>
+
+  </div>
